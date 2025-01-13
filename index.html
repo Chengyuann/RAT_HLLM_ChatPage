@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LangChain-Chatchat 示例</title>
+  <!-- 引入CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 页面整体容器 -->
+  <div class="container">
+    
+    <!-- 左侧侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="logo">LangChain-Chatchat<sup>v0.3.0-preview</sup></h2>
+      </div>
+
+      <!-- 菜单列表 -->
+      <nav class="menu">
+        <ul>
+          <li class="menu-item active">对话</li>
+          <li class="menu-item">知识库管理</li>
+        </ul>
+      </nav>
+
+      <!-- 分割线 -->
+      <hr />
+
+      <!-- 工具设置 -->
+      <div class="tools-setting">
+        <h3>工具设置</h3>
+        <div class="checkbox-item">
+          <input type="checkbox" id="agent" />
+          <label for="agent">启用Agent</label>
+        </div>
+        <div class="select-item">
+          <label for="tools">选择工具</label>
+          <select id="tools">
+            <option value="none" selected>None</option>
+            <option value="tool1">Tool1</option>
+            <option value="tool2">Tool2</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 会话设置 -->
+      <div class="session-setting">
+        <h3>会话设置</h3>
+        <!-- 可以放一些对话参数设置，如温度、tokens限制等 -->
+      </div>
+
+      <!-- 上传文件 -->
+      <div class="upload-file">
+        <label for="upload">上传附件</label>
+        <div class="upload-area">
+          <p>Drag and drop file here</p>
+          <p>Limit 200MB per file</p>
+          <button>Browse files</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧主要内容区 -->
+    <main class="chat-area">
+      <!-- 顶部导航栏 -->
+      <header class="topbar">
+        <span>127.0.0.1</span>
+        <div class="topbar-actions">
+          <button class="deploy-btn">Deploy</button>
+          <button class="more-btn">···</button>
+        </div>
+      </header>
+
+      <!-- 聊天对话区 -->
+      <section class="chat-window">
+        <!-- 示例对话 -->
+        <div class="message user">
+          <div class="avatar">A</div>
+          <div class="content">
+            <p>你好</p>
+          </div>
+        </div>
+        <div class="message assistant">
+          <div class="avatar">B</div>
+          <div class="content">
+            <p>你好！很高兴为你提供帮助。有什么问题或者需要咨询的吗？</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 输入框区域 -->
+      <footer class="input-bar">
+        <textarea 
+          placeholder="请输入对话内容，换行请输入Shift+Enter。"
+          rows="1"
+        ></textarea>
+        <button class="send-btn">发送</button>
+      </footer>
+    </main>
+  </div>
+
+  <!-- 可选JS脚本 -->
+  <script src="script.js"></script>
+</body>
+</html>
