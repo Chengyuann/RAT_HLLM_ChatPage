@@ -1,0 +1,232 @@
+/* 清除默认边距与留白，方便统一管理 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 页面整体容器：左右布局 */
+.container {
+  display: flex;
+  height: 100vh; /* 全屏 */
+  font-family: sans-serif;
+}
+
+/* 左侧侧边栏样式 */
+.sidebar {
+  width: 260px;
+  background-color: #f8f8f8;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow-y: auto; /* 若内容超出，出现滚动条 */
+}
+
+.sidebar-header .logo {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: #1e1e1e;
+}
+
+.sidebar-header sup {
+  font-size: 0.7rem;
+  color: #666;
+  margin-left: 5px;
+}
+
+/* 菜单列表 */
+.menu ul {
+  list-style: none;
+}
+
+.menu-item {
+  padding: 0.5rem 0;
+  cursor: pointer;
+  color: #333;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #e6e6e6;
+}
+
+.menu-item.active {
+  font-weight: bold;
+  background-color: #e6e6e6;
+}
+
+/* 分割线 */
+hr {
+  margin: 1rem 0;
+}
+
+/* 工具/会话设置 */
+.tools-setting, 
+.session-setting, 
+.upload-file {
+  margin-bottom: 1rem;
+}
+
+.tools-setting h3,
+.session-setting h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-item label {
+  margin-left: 0.5rem;
+}
+
+.select-item {
+  margin-bottom: 0.5rem;
+}
+
+.select-item label {
+  margin-right: 0.5rem;
+}
+
+/* 上传文件 */
+.upload-file > label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+}
+
+.upload-area {
+  border: 2px dashed #aaa;
+  padding: 1rem;
+  text-align: center;
+  color: #666;
+  border-radius: 6px;
+}
+.upload-area button {
+  margin-top: 0.5rem;
+  background-color: #eee;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.upload-area button:hover {
+  background-color: #ddd;
+}
+
+/* 右侧主要内容区 */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+/* 顶部导航栏 */
+.topbar {
+  height: 50px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.topbar span {
+  font-weight: 500;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.deploy-btn,
+.more-btn {
+  background-color: #f2f2f2;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.deploy-btn:hover,
+.more-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* 聊天对话区 */
+.chat-window {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* 单条消息 */
+.message {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.message .avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.message.user .avatar {
+  background-color: #007bff;
+  color: #fff;
+}
+.message.assistant .avatar {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.message .content {
+  background-color: #f1f1f1;
+  padding: 0.8rem;
+  border-radius: 6px;
+  max-width: 65%;
+  word-wrap: break-word;
+}
+
+/* 输入栏 */
+.input-bar {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+}
+
+.input-bar textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  padding: 0.5rem;
+}
+
+.send-btn {
+  margin-left: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.send-btn:hover {
+  background-color: #0056c1;
+}
