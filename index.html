@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LangChain-Chatchat 示例</title>
+  <title>RAT-HLLM-demo</title>
   <!-- 引入CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -14,7 +14,8 @@
     <!-- 左侧侧边栏 -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <h2 class="logo">LangChain-Chatchat<sup>v0.3.0-preview</sup></h2>
+        <!-- 修改标题 -->
+        <h2 class="logo">RAT-HLLM-demo <span>🚀</span></h2>
       </div>
 
       <!-- 菜单列表 -->
@@ -22,6 +23,10 @@
         <ul>
           <li class="menu-item active">对话</li>
           <li class="menu-item">知识库管理</li>
+          <!-- 新增以下三栏 -->
+          <li class="menu-item">自定义知识库数据管理 <span>📚</span></li>
+          <li class="menu-item">运营商数据管理 <span>📡</span></li>
+          <li class="menu-item">社交平台管理 <span>💬</span></li>
         </ul>
       </nav>
 
@@ -30,7 +35,7 @@
 
       <!-- 工具设置 -->
       <div class="tools-setting">
-        <h3>工具设置</h3>
+        <h3>工具设置 <span>🛠️</span></h3>
         <div class="checkbox-item">
           <input type="checkbox" id="agent" />
           <label for="agent">启用Agent</label>
@@ -47,13 +52,13 @@
 
       <!-- 会话设置 -->
       <div class="session-setting">
-        <h3>会话设置</h3>
-        <!-- 可以放一些对话参数设置，如温度、tokens限制等 -->
+        <h3>会话设置 <span>⚙️</span></h3>
+        <!-- 可自定义对话参数、温度等 -->
       </div>
 
       <!-- 上传文件 -->
       <div class="upload-file">
-        <label for="upload">上传附件</label>
+        <label for="upload">上传附件 <span>📂</span></label>
         <div class="upload-area">
           <p>Drag and drop file here</p>
           <p>Limit 200MB per file</p>
@@ -66,7 +71,7 @@
     <main class="chat-area">
       <!-- 顶部导航栏 -->
       <header class="topbar">
-        <span>127.0.0.1</span>
+        <!-- 移除了 127.0.0.1 -->
         <div class="topbar-actions">
           <button class="deploy-btn">Deploy</button>
           <button class="more-btn">···</button>
@@ -75,17 +80,56 @@
 
       <!-- 聊天对话区 -->
       <section class="chat-window">
-        <!-- 示例对话 -->
+        <!-- 示例对话 1 -->
         <div class="message user">
           <div class="avatar">A</div>
           <div class="content">
-            <p>你好</p>
+            <p>你好<span>👋</span>，RAT-HLLM-demo 有什么新功能吗？</p>
           </div>
         </div>
         <div class="message assistant">
           <div class="avatar">B</div>
           <div class="content">
-            <p>你好！很高兴为你提供帮助。有什么问题或者需要咨询的吗？</p>
+            <p>你好！这是一个演示页面，用于展示RAT+HLLM的基础应用示例。有任何问题，随时向我提问<span>💡</span>。</p>
+          </div>
+        </div>
+
+        <!-- 新增 示例模板 1 -->
+        <div class="message assistant template">
+          <div class="avatar">B</div>
+          <div class="content">
+            <p><strong>模板1：账单分析与个性化语气推荐</strong></p>
+            <p>
+              你是一位专业的账单顾问，善于用亲和、简明的语言与用户互动。<br/>
+              根据以下账单信息：<br/>
+              • 用户账单金额：{bill_amount} 元<br/>
+              • 账户余额：{account_balance} 元<br/>
+              • 本月使用流量：{data_usage} GB<br/>
+              • 通话时长：{voice_minutes} 分钟<br/>
+              你需要为用户分析当前状况，并根据使用数据推荐合适的套餐或服务升级。<br/>
+              确保建议清晰且用户感到贴心。<br/><br/>
+              <em>格式：</em><br/>
+              1. 状况分析（简短自然的语气）。<br/>
+              2. 套餐建议（包括推荐原因和可能带来的好处）。<br/>
+              3. 互动式结尾，如“您觉得这些建议适合吗？”。<br/>
+            </p>
+          </div>
+        </div>
+
+        <!-- 新增 示例模板 2 -->
+        <div class="message assistant template">
+          <div class="avatar">B</div>
+          <div class="content">
+            <p><strong>模板2：个性化交互与情感关怀</strong></p>
+            <p>
+              你是一个个性化服务助手，用户本月的消费记录表明其可能有流量不足或通话时间偏少的情况。<br/>
+              通过分析账单，尝试用贴心和友好的语气与用户互动，完成以下任务：<br/>
+              - 问候用户，并对他们的消费状况表达理解。<br/>
+              - 解释问题所在（如流量超出、余额不足）。<br/>
+              - 提供具体推荐，包括套餐详情及优惠。<br/>
+              - 适当带入情感关怀，如“我注意到您最近的流量需求增加了，希望能为您找到最佳方案。”<br/>
+              请避免生硬的语言，确保对话自然、亲切且贴合用户需求。<br/>
+            </p>
           </div>
         </div>
       </section>
