@@ -23,7 +23,6 @@
         <ul>
           <li class="menu-item active">对话</li>
           <li class="menu-item">知识库管理</li>
-          <!-- 新增以下三栏 -->
           <li class="menu-item">自定义知识库数据管理 <span>📚</span></li>
           <li class="menu-item">运营商数据管理 <span>📡</span></li>
           <li class="menu-item">社交平台管理 <span>💬</span></li>
@@ -53,7 +52,6 @@
       <!-- 会话设置 -->
       <div class="session-setting">
         <h3>会话设置 <span>⚙️</span></h3>
-        <!-- 可自定义对话参数、温度等 -->
       </div>
 
       <!-- 上传文件 -->
@@ -71,7 +69,6 @@
     <main class="chat-area">
       <!-- 顶部导航栏 -->
       <header class="topbar">
-        <!-- 移除了 127.0.0.1 -->
         <div class="topbar-actions">
           <button class="deploy-btn">Deploy</button>
           <button class="more-btn">···</button>
@@ -84,52 +81,34 @@
         <div class="message user">
           <div class="avatar">A</div>
           <div class="content">
-            <p>你好<span>👋</span>，RAT-HLLM-demo 有什么新功能吗？</p>
+            <p>你好<span>👋</span>，我打算去海边旅行，需要一款防晒效果好的面部护肤品，最近有什么好推荐吗？</p>
           </div>
         </div>
         <div class="message assistant">
           <div class="avatar">B</div>
           <div class="content">
-            <p>你好！这是一个演示页面，用于展示RAT+HLLM的基础应用示例。有任何问题，随时向我提问<span>💡</span>。</p>
+            <p>你好！根据您的需求，防晒霜是关键，尤其是在海边长时间暴晒。我们将根据您的历史行为和兴趣，进行推荐。</p>
           </div>
         </div>
 
-        <!-- 新增 示例模板 1 -->
-        <div class="message assistant template">
+        <!-- 步骤展示 -->
+        <div class="message assistant">
           <div class="avatar">B</div>
           <div class="content">
-            <p><strong>模板1：账单分析与个性化语气推荐</strong></p>
-            <p>
-              你是一位专业的账单顾问，善于用亲和、简明的语言与用户互动。<br/>
-              根据以下账单信息：<br/>
-              • 用户账单金额：{bill_amount} 元<br/>
-              • 账户余额：{account_balance} 元<br/>
-              • 本月使用流量：{data_usage} GB<br/>
-              • 通话时长：{voice_minutes} 分钟<br/>
-              你需要为用户分析当前状况，并根据使用数据推荐合适的套餐或服务升级。<br/>
-              确保建议清晰且用户感到贴心。<br/><br/>
-              <em>格式：</em><br/>
-              1. 状况分析（简短自然的语气）。<br/>
-              2. 套餐建议（包括推荐原因和可能带来的好处）。<br/>
-              3. 互动式结尾，如“您觉得这些建议适合吗？”。<br/>
-            </p>
+            <p><strong>推荐过程：</strong></p>
+            <p><strong>步骤 1：</strong> 根据您的喜好（深夜浏览美妆博主视频，关注护肤品牌 X），我们选取了几款品牌 X 的防晒霜。</p>
+            <p><strong>步骤 2：</strong> 根据产品的SPF值、成分以及评论，进一步筛选符合海边使用的产品。</p>
+            <p><strong>步骤 3：</strong> 我们发现 <strong>商品 C</strong> 具有 SPF50++ 和防水配方，适合户外活动，推荐给您。</p>
           </div>
         </div>
 
-        <!-- 新增 示例模板 2 -->
-        <div class="message assistant template">
+        <!-- 商品展示 -->
+        <div class="message assistant">
           <div class="avatar">B</div>
           <div class="content">
-            <p><strong>模板2：个性化交互与情感关怀</strong></p>
-            <p>
-              你是一个个性化服务助手，用户本月的消费记录表明其可能有流量不足或通话时间偏少的情况。<br/>
-              通过分析账单，尝试用贴心和友好的语气与用户互动，完成以下任务：<br/>
-              - 问候用户，并对他们的消费状况表达理解。<br/>
-              - 解释问题所在（如流量超出、余额不足）。<br/>
-              - 提供具体推荐，包括套餐详情及优惠。<br/>
-              - 适当带入情感关怀，如“我注意到您最近的流量需求增加了，希望能为您找到最佳方案。”<br/>
-              请避免生硬的语言，确保对话自然、亲切且贴合用户需求。<br/>
-            </p>
+            <p><strong>推荐商品：<span style="color: #007bff;">品牌 X 海滩保湿防晒霜</span></strong></p>
+            <img src="data:image/jpeg;base64,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" alt="防晒霜" style="width: 100px;"/>
+            <p><em>SPF50++，防水，适合海滩使用，保湿成分丰富，用户好评较多。</em></p>
           </div>
         </div>
       </section>
