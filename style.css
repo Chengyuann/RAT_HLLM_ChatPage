@@ -294,3 +294,596 @@ hr {
   background: #f8f9fa;
   border-radius: 8px;
 }
+/* 基础样式 */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f9; /* 浅灰色背景 */
+  color: #333; /* 深灰色文字 */
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* 防止body滚动 */
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+  width: 280px;
+  background-color: #ffffff; /* 白色背景 */
+  border-right: 1px solid #e0e0e0; /* 浅灰色边框 */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-img {
+  width: 30px; /* 调整Logo图片大小 */
+  height: 30px;
+  margin-right: 10px;
+}
+
+.logo {
+  font-size: 1.5em;
+  margin: 0;
+  color: #333; /* 深灰色Logo文字 */
+}
+
+.logo span {
+  color: #007bff; /* 蓝色强调色 */
+}
+
+.menu {
+  flex-grow: 1; /* 菜单占据剩余空间 */
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex; /* 使用Flexbox */
+  align-items: center; /* 垂直居中图标和文字 */
+  color: #555; /* 菜单文字颜色 */
+}
+
+.menu-item i {
+  margin-right: 10px; /* 图标与文字间距 */
+  color: #777; /* 图标颜色 */
+  width: 18px; /* 固定图标宽度，保持对齐 */
+  text-align: center; /* 确保图标居中 */
+}
+
+.menu-item span {
+  margin-left: 5px; /* 菜单文字左边距，如果需要 */
+}
+
+.menu-item.active, .menu-item:hover {
+  background-color: #e9ecef; /* 浅灰色悬停/激活背景 */
+  color: #007bff; /* 蓝色激活文字颜色 */
+}
+
+.menu-item.active i, .menu-item:hover i {
+  color: #007bff; /* 蓝色激活图标颜色 */
+}
+
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+.tools-setting, .session-setting, .upload-file {
+  margin-bottom: 20px;
+}
+
+.tools-setting h3, .session-setting h3, .upload-file h3 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #444; /* 设置标题颜色 */
+  display: flex;
+  align-items: center;
+}
+
+.tools-setting h3 i, .session-setting h3 i, .upload-file h3 i {
+  margin-right: 8px; /* 标题图标间距 */
+  color: #777; /* 标题图标颜色 */
+}
+
+.checkbox-item, .select-item, .setting-item {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item label, .select-item label, .setting-item label {
+  margin-left: 5px;
+  color: #666; /* 设置标签文字颜色 */
+  margin-right: 10px; /* 标签和控件间距 */
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item label i, .select-item label i, .setting-item label i {
+  margin-right: 5px; /* 标签图标间距 */
+  color: #777; /* 标签图标颜色 */
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.select-item select, .setting-item select {
+  padding: 8px;
+  border: 1px solid #ced4da; /* 浅灰色边框 */
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #fff; /* 下拉框背景白色 */
+  color: #555; /* 下拉框文字颜色 */
+  appearance: none; /* 移除默认样式 */
+  -webkit-appearance: none; /* 兼容Safari */
+  -moz-appearance: none; /* 兼容Firefox */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* 下拉箭头 */
+  background-repeat: no-repeat;
+  background-position-x: right 8px;
+  background-position-y: center;
+  padding-right: 25px; /* 留出箭头空间 */
+}
+
+.setting-item input[type="range"] {
+  flex-grow: 1; /* 滑块占据剩余空间 */
+  margin-right: 5px;
+}
+
+#temperature-value {
+  color: #666; /* 滑块值颜色 */
+  margin-left: 5px;
+  width: 30px; /* 固定宽度 */
+  text-align: right; /* 右对齐数值 */
+  display: inline-block; /* 使宽度生效 */
+}
+
+.upload-file .upload-area {
+  border: 2px dashed #ced4da; /* 虚线边框 */
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: #777; /* 提示文字颜色 */
+  cursor: pointer; /* 手型光标 */
+}
+
+.upload-file .upload-area i {
+  font-size: 2em;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.upload-file .upload-area p {
+  margin: 5px 0;
+}
+
+.upload-file .upload-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; /* 蓝色按钮背景 */
+  color: #fff; /* 白色按钮文字 */
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.upload-file .upload-button:hover {
+  background-color: #0056b3; /* 深蓝色悬停按钮背景 */
+}
+
+.upload-file .upload-button i {
+  margin-right: 5px; /* 按钮图标间距 */
+}
+
+
+/* 主要内容区域样式 */
+.chat-area {
+  flex-grow: 1; /* 主要内容区域占据剩余空间 */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.topbar {
+  background-color: #fff; /* 顶部栏白色背景 */
+  border-bottom: 1px solid #e0e0e0; /* 浅灰色下边框 */
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar-title {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-title h2 {
+  font-size: 1.3em;
+  margin: 0;
+  margin-right: 10px;
+  color: #333; /* 顶部栏标题文字颜色 */
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.status-indicator.online {
+  background-color: #28a745; /* 绿色在线指示器 */
+}
+
+.status-text {
+  font-size: 0.9em;
+  color: #777; /* 状态文字颜色 */
+}
+
+.topbar-actions button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; /* 蓝色按钮背景 */
+  color: #fff; /* 白色按钮文字 */
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.topbar-actions button:hover {
+  background-color: #0056b3; /* 深蓝色悬停按钮背景 */
+}
+
+.topbar-actions button i {
+  margin-right: 5px; /* 按钮图标间距 */
+}
+
+.more-btn {
+  background-color: transparent !important; /* 透明背景 */
+  color: #777 !important; /* 浅灰色文字 */
+  border: 1px solid #ced4da; /* 浅灰色边框 */
+}
+
+.more-btn:hover {
+  background-color: #e9ecef !important; /* 浅灰色悬停背景 */
+  color: #333 !important; /* 深灰色悬停文字 */
+}
+
+
+.chat-window {
+  flex-grow: 1; /* 聊天窗口占据剩余空间 */
+  padding: 20px;
+  overflow-y: auto; /* 允许垂直滚动 */
+  display: flex;
+  flex-direction: column; /* 垂直排列消息 */
+}
+
+.scenario-header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.scenario-header h3 {
+  font-size: 1.2em;
+  margin: 0 0 5px 0;
+  color: #444; /* 场景标题颜色 */
+  display: flex;
+  align-items: center;
+}
+
+.scenario-header h3 i {
+  margin-right: 8px; /* 场景标题图标间距 */
+  color: #777; /* 场景标题图标颜色 */
+}
+
+.scenario-desc {
+  font-size: 0.95em;
+  color: #666; /* 场景描述颜色 */
+  margin: 0;
+}
+
+.message {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start; /* 消息顶部对齐 */
+}
+
+.message.user {
+  justify-content: flex-end; /* 用户消息靠右 */
+  text-align: right; /* 用户消息文字右对齐 */
+}
+
+.message.assistant {
+  justify-content: flex-start; /* 助手消息靠左 */
+  text-align: left; /* 助手消息文字左对齐 */
+}
+
+.message.system-prompt {
+  background-color: #f8f9fa; /* 系统提示消息背景色 */
+  border: 1px solid #e0e0e0; /* 系统提示消息边框 */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.message.system-prompt .content p {
+  margin: 5px 0; /* 系统提示段落间距 */
+}
+
+.message.product-recommendation .product-card {
+  display: flex;
+  background-color: #fff; /* 商品卡片背景白色 */
+  border: 1px solid #ced4da; /* 商品卡片边框 */
+  border-radius: 8px;
+  overflow: hidden; /* 裁剪溢出内容 */
+  margin-top: 10px;
+}
+
+.message.product-recommendation .product-image {
+  width: 120px; /* 商品图片宽度 */
+  height: 120px; /* 商品图片高度 */
+  object-fit: cover; /* 图片填充方式 */
+}
+
+.message.product-recommendation .product-details {
+  padding: 15px;
+  flex-grow: 1; /* 商品详情占据剩余空间 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* 垂直方向均匀分布 */
+}
+
+.message.product-recommendation .product-name {
+  font-weight: bold; /* 商品名称加粗 */
+  color: #007bff; /* 商品名称蓝色 */
+  margin-bottom: 5px;
+}
+
+.message.product-recommendation .product-price,
+.message.product-recommendation .product-features {
+  margin: 3px 0;
+  font-size: 0.95em;
+  color: #555; /* 商品价格和特性文字颜色 */
+  display: flex;
+  align-items: center; /* 特性图标垂直居中 */
+}
+
+.message.product-recommendation .product-features i {
+  margin-right: 5px; /* 特性图标间距 */
+  color: #777; /* 特性图标颜色 */
+}
+
+.message.product-recommendation .buy-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745; /* 绿色购买按钮背景 */
+  color: #fff; /* 白色购买按钮文字 */
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  align-self: flex-start; /* 按钮靠左对齐 */
+}
+
+.message.product-recommendation .buy-button:hover {
+  background-color: #1e7e34; /* 深绿色悬停按钮背景 */
+}
+
+.message.product-recommendation .buy-button i {
+  margin-right: 5px; /* 购买按钮图标间距 */
+}
+
+.message.course-plan .course-stage {
+  background-color: #fff; /* 课程阶段卡片背景白色 */
+  border: 1px solid #ced4da; /* 课程阶段卡片边框 */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.message.course-plan .stage-title {
+  font-size: 1.1em;
+  margin: 0 0 8px 0;
+  color: #444; /* 阶段标题颜色 */
+  display: flex;
+  align-items: center;
+}
+
+.message.course-plan .stage-title i {
+  margin-right: 8px; /* 阶段标题图标间距 */
+  color: #777; /* 阶段标题图标颜色 */
+}
+
+.message.course-plan .course-name {
+  font-weight: bold; /* 课程名称加粗 */
+  margin: 0 0 5px 0;
+  color: #007bff; /* 课程名称蓝色 */
+}
+
+.message.course-plan .course-desc {
+  font-size: 0.95em;
+  color: #555; /* 课程描述颜色 */
+  margin: 0 0 10px 0;
+}
+
+.message.course-plan .enroll-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffc107; /* 黄色报名按钮背景 */
+  color: #333; /* 深灰色报名按钮文字 */
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.message.course-plan .enroll-button:hover {
+  background-color: #ffb300; /* 深黄色悬停按钮背景 */
+}
+
+.message.course-plan .enroll-button i {
+  margin-right: 5px; /* 报名按钮图标间距 */
+}
+
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ddd; /* 默认头像背景色 */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin: 0 10px; /* 头像左右间距 */
+  overflow: hidden; /* 裁剪头像图片 */
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 头像图片填充方式 */
+}
+
+.user .avatar {
+  background-color: #007bff; /* 用户头像蓝色背景 */
+}
+
+.assistant .avatar {
+  background-color: #6c757d; /* 助手头像灰色背景 */
+}
+
+.system-prompt .avatar {
+  background-color: #28a745; /* 系统提示头像绿色背景 */
+}
+
+.content {
+  background-color: #fff; /* 消息内容白色背景 */
+  border-radius: 8px;
+  padding: 12px 18px;
+  word-wrap: break-word; /* 长文本换行 */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* 消息内容阴影 */
+  max-width: 70%; /* 消息内容最大宽度 */
+}
+
+.user .content {
+  background-color: #e0f7fa; /* 用户消息浅蓝色背景 */
+}
+
+.assistant .content {
+  background-color: #fff; /* 助手消息白色背景 */
+}
+
+.content p {
+  margin: 0 0 8px 0; /* 段落间距 */
+  line-height: 1.5; /* 行高 */
+}
+
+.content ul, .content ol {
+  margin: 8px 0;
+  padding-left: 25px;
+}
+
+.content li {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.thought-process {
+  background-color: #f8f9fa; /* 思维链背景色 */
+  border: 1px solid #e0e0e0; /* 思维链边框 */
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666; /* 思维链文字颜色 */
+  display: flex;
+  align-items: center;
+}
+
+.thought-process i {
+  margin-right: 8px; /* 思维链图标间距 */
+  color: #777; /* 思维链图标颜色 */
+}
+
+.thought-text {
+  font-style: italic; /* 思维链文字斜体 */
+}
+
+
+.input-bar {
+  background-color: #fff; /* 输入栏白色背景 */
+  border-top: 1px solid #e0e0e0; /* 输入栏上边框 */
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.input-bar textarea {
+  flex-grow: 1; /* 输入框占据剩余空间 */
+  border: 1px solid #ced4da; /* 输入框边框 */
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 1em;
+  resize: none; /* 禁止手动调整大小 */
+  overflow: auto; /* 内容超出时显示滚动条 */
+  min-height: 40px; /* 最小高度 */
+  max-height: 150px; /* 最大高度限制 */
+  line-height: 1.5; /* 输入框行高 */
+  margin-right: 10px; /* 输入框和发送按钮间距 */
+}
+
+.input-bar textarea:focus {
+  outline: none; /* 移除聚焦边框 */
+  border-color: #007bff; /* 聚焦时边框颜色 */
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* 聚焦时阴影 */
+}
+
+.input-bar button.send-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff; /* 蓝色发送按钮背景 */
+  color: #fff; /* 白色发送按钮文字 */
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.input-bar button.send-btn:hover {
+  background-color: #0056b3; /* 深蓝色悬停按钮背景 */
+}
+
+.input-bar button.send-btn i {
+  margin-right: 5px; /* 发送按钮图标间距 */
+}
