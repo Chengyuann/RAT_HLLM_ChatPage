@@ -3,128 +3,273 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RAT-HLLM-demo</title>
-  <!-- 引入CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <title>RAT-HLLM 智能推荐系统</title>
+  <!-- 引入CSS和图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* 新增样式 */
+    :root {
+      --primary-color: #2A5CAA;
+      --secondary-color: #6C8EBF;
+      --gradient-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .scene-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin: 20px 0;
+      padding: 20px;
+      transition: transform 0.3s;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .scene-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+      margin: 15px 0;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: var(--secondary-color);
+    }
+
+    .timeline-step {
+      position: relative;
+      margin-bottom: 20px;
+      padding-left: 25px;
+    }
+
+    .timeline-step::before {
+      content: "✓";
+      position: absolute;
+      left: -5px;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+    }
+
+    .web3-badge {
+      background: #f0f6ff;
+      border: 1px solid var(--primary-color);
+      padding: 5px 10px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      margin: 5px 0;
+    }
+
+    .web3-badge i {
+      color: var(--primary-color);
+      margin-right: 8px;
+    }
+
+    .interactive-box {
+      background: var(--gradient-bg);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      position: relative;
+    }
+
+    .interactive-box::after {
+      content: "▶";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-color);
+    }
+  </style>
 </head>
 <body>
-  <!-- 页面整体容器 -->
   <div class="container">
-    
-    <!-- 左侧侧边栏 -->
+    <!-- 左侧侧边栏新增场景导航 -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <!-- 修改标题 -->
-        <h2 class="logo">RAT-HLLM-demo <span>🚀</span></h2>
+        <h2 class="logo">智能推荐系统 <span class="fas fa-rocket"></span></h2>
       </div>
 
-      <!-- 菜单列表 -->
+      <!-- 新增场景导航 -->
       <nav class="menu">
         <ul>
-          <li class="menu-item active">对话</li>
-          <li class="menu-item">知识库管理</li>
-          <li class="menu-item">自定义知识库数据管理 <span>📚</span></li>
-          <li class="menu-item">运营商数据管理 <span>📡</span></li>
-          <li class="menu-item">社交平台管理 <span>💬</span></li>
+          <li class="menu-item active"><i class="fas fa-comments"></i> 会话中心</li>
+          <li class="menu-item"><i class="fas fa-sitemap"></i> 场景模板库</li>
+          <div class="scene-submenu">
+            <li class="submenu-item"><i class="fas fa-satellite-dish"></i> 通信行业</li>
+            <li class="submenu-item"><i class="fas fa-shopping-cart"></i> 电商推荐</li>
+            <li class="submenu-item"><i class="fas fa-graduation-cap"></i> 在线教育</li>
+          </div>
         </ul>
       </nav>
 
-      <!-- 分割线 -->
-      <hr />
-
-      <!-- 工具设置 -->
-      <div class="tools-setting">
-        <h3>工具设置 <span>🛠️</span></h3>
-        <div class="checkbox-item">
-          <input type="checkbox" id="agent" />
-          <label for="agent">启用Agent</label>
-        </div>
-        <div class="select-item">
-          <label for="tools">选择工具</label>
-          <select id="tools">
-            <option value="none" selected>None</option>
-            <option value="tool1">Tool1</option>
-            <option value="tool2">Tool2</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- 会话设置 -->
-      <div class="session-setting">
-        <h3>会话设置 <span>⚙️</span></h3>
-      </div>
-
-      <!-- 上传文件 -->
-      <div class="upload-file">
-        <label for="upload">上传附件 <span>📂</span></label>
-        <div class="upload-area">
-          <p>Drag and drop file here</p>
-          <p>Limit 200MB per file</p>
-          <button>Browse files</button>
+      <!-- 新增场景状态仪表盘 -->
+      <div class="dashboard">
+        <h3><i class="fas fa-chart-line"></i> 场景分析</h3>
+        <div class="metric-box">
+          <div class="metric-item">
+            <span class="metric-value">83%</span>
+            <span class="metric-label">推荐准确率</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 83%"></div>
+          </div>
         </div>
       </div>
     </aside>
 
     <!-- 右侧主要内容区 -->
     <main class="chat-area">
-      <!-- 顶部导航栏 -->
-      <header class="topbar">
-        <div class="topbar-actions">
-          <button class="deploy-btn">Deploy</button>
-          <button class="more-btn">···</button>
-        </div>
-      </header>
+      <!-- 新增场景切换选项卡 -->
+      <div class="scene-tabs">
+        <button class="tab-btn active" data-scene="communication">
+          <i class="fas fa-mobile-alt"></i> 通信行业
+        </button>
+        <button class="tab-btn" data-scene="ecommerce">
+          <i class="fas fa-shopping-bag"></i> 电商推荐
+        </button>
+        <button class="tab-btn" data-scene="education">
+          <i class="fas fa-book-open"></i> 在线教育
+        </button>
+      </div>
 
-      <!-- 聊天对话区 -->
-      <section class="chat-window">
-        <!-- 示例对话 1 -->
-        <div class="message user">
-          <div class="avatar">A</div>
-          <div class="content">
-            <p>你好<span>👋</span>，我打算去海边旅行，需要一款防晒效果好的面部护肤品，最近有什么好推荐吗？</p>
-          </div>
-        </div>
-        <div class="message assistant">
-          <div class="avatar">B</div>
-          <div class="content">
-            <p>你好！根据您的需求，防晒霜是关键，尤其是在海边长时间暴晒。我们将根据您的历史行为和兴趣，进行推荐。</p>
-          </div>
-        </div>
-
-        <!-- 步骤展示 -->
-        <div class="message assistant">
-          <div class="avatar">B</div>
-          <div class="content">
-            <p><strong>推荐过程：</strong></p>
-            <p><strong>步骤 1：</strong> 根据您的喜好（深夜浏览美妆博主视频，关注护肤品牌 X），我们选取了几款品牌 X 的防晒霜。</p>
-            <p><strong>步骤 2：</strong> 根据产品的SPF值、成分以及评论，进一步筛选符合海边使用的产品。</p>
-            <p><strong>步骤 3：</strong> 我们发现 <strong>商品 C</strong> 具有 SPF50++ 和防水配方，适合户外活动，推荐给您。</p>
+      <!-- 通信行业场景示例 -->
+      <div class="scene-card active" data-scene="communication">
+        <div class="scene-header">
+          <h3><i class="fas fa-satellite-dish"></i> 套餐优化建议</h3>
+          <div class="web3-badge">
+            <i class="fab fa-ethereum"></i>
+            <span>区块链数据验证已启用</span>
           </div>
         </div>
 
-        <!-- 商品展示 -->
-        <div class="message assistant">
-          <div class="avatar">B</div>
-          <div class="content">
-            <p><strong>推荐商品：<span style="color: #007bff;">品牌 X 海滩保湿防晒霜</span></strong></p>
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8SEhMSEBAQEBASEhYSDw4QDg8ODxANFREXFxURFRUYHSggGBolGxgWITEhJSsrMS4uGB8/OzMsNygtLysBCgoKDg0OGw8PFy0dHR0tKy0rLS0rMi0rLS0tKysrLS0rLS8tNy0tKystLTcrKzgrLTctNy0rKy0tListLTc3N//AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAABAUGAwcBAv/EAEMQAAIBAgQBBgwDBQcFAAAAAAABAgMRBAUSITEiMkFRcbEGEyMzUmFygZGywfA0odEUgpKiwiRCQ2Jzo/EHY4OT4f/EABgBAQEBAQEAAAAAAAAAAAAAAAABAgME/8QAHxEBAQACAgIDAQAAAAAAAAAAAAECMRESA0EhMmET/9oADAMBAAIRAxEAPwD3EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARcfUkorTe7dm1u0iv11uuf5v7++kC6BS663XU/m+/voZ811eufxl9/fWBdggZfUnqalq4X3v0NdL7SeABHx9SUacnBXklyVZvdu3BGd8biuut8Kn0+nauozcuBqgZTxuJ663+59Pvq6h47E9db/c+n07V1E7jVgzuW4quqkVJ1GpOzU1Lq79vvgaI1LyAOONqyjTlKKvJRbS62ZR4jGelV+Dj+XR9PWjcx5XhsQY79oxfpVv5l/x9H1oPEYv0qv8y+/o+tF6HDYgzWXYuupwUnUacknqjK2/d9Ow0pmzhAHxmanQxD3am2/W/pw+n5GbeGsceWmBl3h63VP+Zf8AH07Nh4it1T/Nf8ffQZ7N/wAv1qAZSrTrR3tJW3vdr7+nrRqo3sr8entNS8s5Y9X0AFYAAAAAH4q8Ow4yxEVzpKPVeSR3mrp9hmPCmnVlCm4UY1IRnGVWTSlKKVSFko2u4reb9hJppsDSazhiK+lNlblOMqTVTW9SjVcKc3SlR10lCDUrPju2tS2drrY4Z3ibQfYES/ByvKr46q+mp4uHVogv1lL4F0U/gnS04Wn1y1Sfvm33WLgK/NRXT7Cuq4+nC3jKkIXW2ucYX67Xe5ZmS8KaddwSpU4zjGadZXbnoU47Rioy1LjJre+hK0k2jNWL91DnUr2RUZRiaklV8Y5yUaumlOpR8TOVLxVN3tpjflua1WV7cD7mOItFmbR3ynEuriZejShf/wAknZfkpfE0Jl/AWF416npVFH3Rjf8AqNQax0j5JXTXXsVMsYoJOpOMFwvOSitXVdluZ/NadZxqRo6PGOVk5zdNKDd5OLUXaVm7bcbHSLE9YpNJqSknwad016mcp41rpKbLp1VaMlNQjSXJdLxcKdRO2iD0RukrdD7WfcZWsmanycOuWYuVXGJXemnCc7evaK+ZmpMh4FR1Va8+qMY/Ft/Q15nLZQrcRWUNTepqL4QhOpKze1oxTb49CLIqs2oykpwhN05TjZVEruN9m1ut7dN9jnkuO3PCY6FWOunq06pRvKnUpPVGTjLkzSfFPe2538bYzOU5dXpVKepWhTp1ITlGtNU6knKn4vRR1NJJKXVpuklYtsRWsmYdpOULGYt1cTQop7OopT9cYctr+U15hPBjymOcn/h05Ndraj9Tdm8dMeXfAADTkAAAAABBlOSWyT/et0pfr8CcQK9Pe+qMbN85J9O1rhcdotWvLd2jfoWuO/XvcznhBiZNW5PVtK5e4imuipB9aUYb7+oz2cRTktukkby6xtMnp6aFJdVOPx0omHPDxtCK6opfBHQrmFLmlWcG9EYSe7tOap73jsm+1/D1l0UWfwk5R0xnK73006VRJaU+VrTsm4pbb7rqJVirqZnUtJpUW0ouMP2ineV7qW6bSV1t1r1lLmuY1nGXk6bs7cispXi78rhtwW3rJVbx0W0sNUikklK1CP8AftdJcOS27cLXK3H0VC6TTbfFQjDbq26O050bfwMo6cLB+lKUn/Fb6F4V+QU9OHpL/Lf4tv6lgdJpAqcfJxnJpxV3B3ntHS2k+lb2T+BbFPnsZb6YylJxjaMXBSbU77OW3xNQirr46o7JujezXJnq8pbZWve19igxuOqtWboX6VGbk0rLe2z63972+YQqq2mjOSulvUpRtG+7tbs+JSY2m1FSldSa3hJxk4O3pJb9VzeLTTeAEH4qcpK0pSV11NLh+ZqSi8DYWw/bNv8AliXpi7ZoVuctqLak4PS7SUVJpproafWWRX51TcoNR0uTUlHXq0arbatO9rrexm6ax2zbr1k46qtSaTcpOOF58bc3ZPS1t632WIOJeIdNv9ob4rfDxpvVZ8F0K9uPUScXlddW0rCK3pTxMmldX3v6Or8ivxWH0R1TUfHPVqdOU9DTlfZP1JdHWc69GKw/6d05OpXnJ3fBPbmubaXwSNyZH/p7DkVZdcor4av1NcdMdOHk+1AAVgAAAAACDilG/K1Ld20xv0JvoZOK/MOK4dPHX6P+Ulaw2hYqC3s5+9tGcxEb1Ird79O7NFWXJv0u/DUul9ZQ043rR7SxM788N4gAECk8IMT4txbbipbXVWFLdrbncfcXZTeEGNlScHFwTldcuNWXCEpbKCbbuum21yUjNvENzitVR35T1V9XFS5NtCutvV+RV453qJes0M8XOerVp2vbTCpDbXNf3+O0UZ2W9Vdpyu1r0nLY2o0l/wBuHyoknLCq0ILqjHuOp2QKvO3ZKSvsnwlpfGPTZ2+BaFdndSUYao21RUrXjKSvp6VHd8OgsGYzHFpxVnU91eslzdV7qHHZbFRm7taN29+Ld3uzS4nF1G7NqzdtqdSPTPpl2L7Zl81d5x7UdMWm+8GoWw8O199voWhAyJWoQ/e+dk853bIQM7i3RmkrvTKy067vRKy03V+y67UTyHmzapTaumotprTdPS7Natr9uxm6XHbH42hW6aCundT/AGanxi1pafjW724dnQVmZYqUlaVOcXbdyULX9zZa0sXVnKKdSc9tTi6mF5vk92ocq27+PrRWZyznXqwajwDhahJ9c/6V+ppSg8C42w/77+WJfnSaebP7UABWQAAAAAI9aUk+THV18rTYkHKXECnzKc7Pkrh6W17L/wC/AocBd1o3Vt+u/SaHNeDKHLPPx9pd4LfxuAAAKXwiwlSpoULXV76qtWkrOEkuZu92XRX5pQlNxtUlTtu9NryXVfoJRnZYeVOm4y0p6py5EpyVpTbW8977/psZ+h533l7mWDmlK9eq04pbvdNJJyv1uz+Jn8ug1V3k5ceKS7jl7HqdNbLsXcfo+I+nYCvzuk509KteV0ruUVdwlxcd17iwIeawbhZNxbdlJcU2mrosFBUwkoam1BJxtyZVJO+pvfU7dJlsw87H2kazMMJJJeWqbO7u76tls+i2z+Jjq9FqvHlyleXB2dt724HTFp6bk68jT7PqyYRcrXkqfsolHKshGzGlqpzjtylp3ipLfbeL2a34MknDGwThJPg1Z9jZLpZtmo5U6T1a4yWjTpWHo0vR3vFX/u8P0Rms3fKNNjsmoKPNlztbeuWpzV7O/vZj8yw0FUuk027vlS3d278fWznXqweheCkbUF7T7kXJU+DHmF2v6FsdJp5stgAKyAAAAABynxOpylxAqM4ezKLJ/Px9pfMi7zl7Mo8k8/H2l8yCN0AAoRcXxXYSiLi+K7CUZ/N+DMvgPPfE1Ob8GZXAPy3xOXsepgA7ARsfzV7SJJFzDmr2kWbFXmfNMTiPxEPaNtmXNMXW/EQ9o6zTUek5b5qn7Ee4kkfL/NU/Yj8qJBxZDliea/d3nU5Yjmv3d5LpZtT5k+SYXM3y12m5zJ8kweZvynvOdevx6ei+DXmI9rLUqvBrzEe1lqdJp5MtgAKgAAAAAHKXE6nGfECmzt7Mosj8/H2l8yLvPODKPIvPx9qPzIqN6ACKETGcV2EsiY3iuwlGfzjgzKYB+X+Jqs4ezMngX5f4nL2PWAfEfTsBFzDmr2kSiLmPNXtL6lmxU5nzTFzf9ph2mzzTmmKX4iPadZpp6dl/mqfsR+VEgj5f5qn7EflRIOLIcsTzX7u9HU5Yrmv3d6JVm1NmXNMBmj8p7ze5k+Sef5o/Ke8516/G9K8GH5Bdr7kWxT+Cz8gvafci4Ok08mWwAFQAAAAADjPne5HY4VXv7l3sCjz3gyjyLz8faj86LjOp8SoyJeXj7UfmRUb4AEUImN4rsJZCzB7rsf0JdDNZ3PZmVy1+W+Jo88nxM3lq8t8e45ex65Dguw+nxI+nYCJmXNXtr6ksiZnzV7S+pZsVGZ80xS/Ex7TXZrXSizGU53xEfaOsaep5d5qn7Ee4kkbLl5Kn7Ee4knFkOOL5r93ejscMZzH7u9EqzakzR8k8/wA0fL95us3qckweZO8vec69njel+Cf4de1/Si5KXwSX9nXb/Si6Ok08mWwAFZAAAAAAjYuF+Dts+oknHEfR/QDL4rCOTd6kv4YnLIsGo4tcuUkot2aile3qRPqcX2nHKF/a/wB19zKjVAAihCzSm3FaWk78Wr7W37kTSPjeau36Ml0PP81oVpSa8ZD+B/qVuVYKccbQi6icZSWqKp2um7NXuXuN58u0gYL8fh+1d5x9j0wAHcCNmEb02uzfqepbkk4Y7mPtXzIDD51Req3jH/CjO4ui6UoSjO8taS5KNNnfP9xnc3/w/wDUXed429aoK0Y24aVbssfs/FLmrsXcfs4MBzxEbxkvU+46H5qcH2PuAxGfU6/CMqe/WpGSzPLsRGLm6lPboUZNm5zvijN56/JP3HGvdh6bzwWhbC0b7twvJ8LyfEtSt8HPw1H/AE0WR1mniy3QAFQAAAAADlX/AFOoAzlWLu9pcfRZ+cmoz/aXJwmo6HynCSjftZpQAAAAj41rTd7K/F9jJAA8+x+JpqcuXHj6SIeU1YSzGgoyjJ2bsmm7LpPS/Fx9FfBH1JLgrGOg+gA2BxxavF234d6OwAw+cUZue0Jvbopzf0KLMsBXm6ajRrStUV7Uajsr8Xseqg33a7PzTWy7EfoAwyHyfB9h9AGSz1q8d/uxmM8mvFPdcV0o9Lq5fQk7zo0pPrlThJ/mj8rK8N0UKP8A6af6GLg9GPmk9OeQfhqP+nHuJ58Stw4dR9NuF+aAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//Z" alt="防晒霜" style="width: 100px;"/>
-            <p><em>SPF50++，防水，适合海滩使用，保湿成分丰富，用户好评较多。</em></p>
+        <div class="timeline">
+          <div class="timeline-step">
+            <h4>动态模式识别</h4>
+            <p>识别到用户连续3个月流量超限（平均超5GB），漫游时段集中在周末</p>
+          </div>
+          <div class="timeline-step">
+            <h4>多维度匹配</h4>
+            <p>结合VIP等级（黄金会员）和历史ARPU值（150元），筛选出2个优化方案</p>
           </div>
         </div>
-      </section>
 
-      <!-- 输入框区域 -->
-      <footer class="input-bar">
-        <textarea 
-          placeholder="请输入对话内容，换行请输入Shift+Enter。"
-          rows="1"
-        ></textarea>
-        <button class="send-btn">发送</button>
-      </footer>
+        <div class="interactive-box">
+          <h4>智能推荐方案</h4>
+          <div class="solution-comparison">
+            <div class="solution-card">
+              <div class="solution-header" style="background: #2A5CAA">
+                <h5><i class="fas fa-crown"></i> 畅享尊荣版</h5>
+                <span class="price-tag">¥188/月</span>
+              </div>
+              <ul>
+                <li><i class="fas fa-database"></i> 40GB全域流量</li>
+                <li><i class="fas fa-phone-volume"></i> 500分钟通话</li>
+                <li><i class="fas fa-map-marker-alt"></i> 京津冀漫游特权</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 电商推荐场景示例 -->
+      <div class="scene-card" data-scene="ecommerce">
+        <div class="scene-header">
+          <h3><i class="fas fa-box-open"></i> 新品冷启动推荐</h3>
+          <div class="web3-badge">
+            <i class="fas fa-certificate"></i>
+            <span>NFT溯源认证支持</span>
+          </div>
+        </div>
+
+        <div class="dynamic-grid">
+          <div class="product-card">
+            <img src="https://via.placeholder.com/200x150?text=轻量化帐篷" 
+                 alt="露营装备"
+                 class="product-img">
+            <div class="product-meta">
+              <span class="tag new-tag">新品首发</span>
+              <span class="tag stock-tag"><i class="fas fa-bolt"></i> 仅剩12件</span>
+            </div>
+            <h5>清风Pro帐篷</h5>
+            <div class="feature-list">
+              <div class="feature-item">
+                <i class="fas fa-weight-hanging"></i>
+                <span>1.2kg超轻量</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-wind"></i>
+                <span>8级抗风</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育场景示例 -->
+      <div class="scene-card" data-scene="education">
+        <div class="scene-header">
+          <h3><i class="fas fa-user-graduate"></i> 学习路径规划</h3>
+          <div class="web3-badge">
+            <i class="fas fa-link"></i>
+            <span>智能合约认证</span>
+          </div>
+        </div>
+
+        <div class="learning-path">
+          <div class="path-stage">
+            <div class="stage-icon">
+              <i class="fas fa-chart-bar"></i>
+              <div class="stage-line"></div>
+            </div>
+            <h5>统计学实战</h5>
+            <p>通过NBA数据分析掌握核心概念</p>
+          </div>
+          <div class="path-stage">
+            <div class="stage-icon">
+              <i class="fas fa-code"></i>
+              <div class="stage-line"></div>
+            </div>
+            <h5>Python强化</h5>
+            <p>基于Pandas重构可视化项目</p>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 
-  <!-- 可选JS脚本 -->
-  <script src="script.js"></script>
+  <!-- 新增脚本 -->
+  <script>
+    // 选项卡切换逻辑
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // 移除所有激活状态
+        document.querySelectorAll('.tab-btn, .scene-card').forEach(el => {
+          el.classList.remove('active');
+        });
+        
+        // 添加当前激活状态
+        this.classList.add('active');
+        const scene = this.dataset.scene;
+        document.querySelector(`.scene-card[data-scene="${scene}"]`).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
