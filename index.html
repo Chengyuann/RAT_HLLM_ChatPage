@@ -3,273 +3,317 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RAT-HLLM 智能推荐系统</title>
-  <!-- 引入CSS和图标库 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    /* 新增样式 */
-    :root {
-      --primary-color: #2A5CAA;
-      --secondary-color: #6C8EBF;
-      --gradient-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    }
-
-    .scene-card {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      margin: 20px 0;
-      padding: 20px;
-      transition: transform 0.3s;
-      border-left: 4px solid var(--primary-color);
-    }
-
-    .scene-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 30px;
-      margin: 15px 0;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      top: 0;
-      height: 100%;
-      width: 2px;
-      background: var(--secondary-color);
-    }
-
-    .timeline-step {
-      position: relative;
-      margin-bottom: 20px;
-      padding-left: 25px;
-    }
-
-    .timeline-step::before {
-      content: "✓";
-      position: absolute;
-      left: -5px;
-      top: 2px;
-      width: 20px;
-      height: 20px;
-      background: var(--primary-color);
-      color: white;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 20px;
-      font-size: 12px;
-    }
-
-    .web3-badge {
-      background: #f0f6ff;
-      border: 1px solid var(--primary-color);
-      padding: 5px 10px;
-      border-radius: 20px;
-      display: inline-flex;
-      align-items: center;
-      margin: 5px 0;
-    }
-
-    .web3-badge i {
-      color: var(--primary-color);
-      margin-right: 8px;
-    }
-
-    .interactive-box {
-      background: var(--gradient-bg);
-      padding: 15px;
-      border-radius: 10px;
-      margin: 15px 0;
-      position: relative;
-    }
-
-    .interactive-box::after {
-      content: "▶";
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--primary-color);
-    }
-  </style>
+  <title>RAT-HLLM-Demo - 智能对话平台</title> <!-- 更专业的标题 -->
+  <!-- 引入 Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- 引入自定义CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <!-- 左侧侧边栏新增场景导航 -->
+    <!-- 侧边栏 -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <h2 class="logo">智能推荐系统 <span class="fas fa-rocket"></span></h2>
+        <img src="images/logo.svg" alt="RAT-HLLM Logo" class="logo-img"> <!--  Logo 图片 -->
+        <h2 class="logo">RAT-HLLM-Demo <span><i class="fas fa-rocket"></i></span></h2> <!--  火箭图标 -->
       </div>
 
-      <!-- 新增场景导航 -->
       <nav class="menu">
         <ul>
-          <li class="menu-item active"><i class="fas fa-comments"></i> 会话中心</li>
-          <li class="menu-item"><i class="fas fa-sitemap"></i> 场景模板库</li>
-          <div class="scene-submenu">
-            <li class="submenu-item"><i class="fas fa-satellite-dish"></i> 通信行业</li>
-            <li class="submenu-item"><i class="fas fa-shopping-cart"></i> 电商推荐</li>
-            <li class="submenu-item"><i class="fas fa-graduation-cap"></i> 在线教育</li>
-          </div>
+          <li class="menu-item active"><i class="fas fa-comments"></i> 对话</li>
+          <li class="menu-item"><i class="fas fa-database"></i> 知识库管理</li>
+          <li class="menu-item"><i class="fas fa-book-open"></i> 自定义知识库数据管理</li>
+          <li class="menu-item"><i class="fas fa-broadcast-tower"></i> 运营商数据管理</li>
+          <li class="menu-item"><i class="fas fa-share-alt"></i> 社交平台管理</li>
+          <li class="menu-item"><i class="fas fa-cog"></i> 系统设置</li>  <!-- 新增系统设置 -->
+          <li class="menu-item"><i class="fas fa-question-circle"></i> 帮助中心</li> <!-- 新增帮助中心 -->
         </ul>
       </nav>
 
-      <!-- 新增场景状态仪表盘 -->
-      <div class="dashboard">
-        <h3><i class="fas fa-chart-line"></i> 场景分析</h3>
-        <div class="metric-box">
-          <div class="metric-item">
-            <span class="metric-value">83%</span>
-            <span class="metric-label">推荐准确率</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 83%"></div>
-          </div>
+      <hr class="sidebar-divider"/> <!-- 分割线 -->
+
+      <div class="tools-setting">
+        <h3><i class="fas fa-tools"></i> 工具设置</h3>
+        <div class="checkbox-item">
+          <input type="checkbox" id="agent" />
+          <label for="agent"><i class="fas fa-user-astronaut"></i> 启用 Agent</label>
+        </div>
+        <div class="select-item">
+          <label for="tools"><i class="fas fa-wrench"></i> 选择工具</label>
+          <select id="tools">
+            <option value="none" selected>无</option>
+            <option value="tool1">工具 1</option>
+            <option value="tool2">工具 2</option>
+            <option value="tool3">工具 3</option> <!-- 增加更多工具选项 -->
+          </select>
+        </div>
+      </div>
+
+      <div class="session-setting">
+        <h3><i class="fas fa-sliders-h"></i> 会话设置</h3>
+        <div class="setting-item">
+          <label for="model-select"><i class="fas fa-robot"></i> 模型选择</label>
+          <select id="model-select">
+            <option value="model1">模型 A</option>
+            <option value="model2" selected>模型 B (默认)</option>
+            <option value="model3">模型 C</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label for="temperature"><i class="fas fa-thermometer-half"></i> 创造性</label>
+          <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7"> <span id="temperature-value">0.7</span>
+        </div>
+      </div>
+
+      <div class="upload-file">
+        <label for="upload"><i class="fas fa-upload"></i> 上传附件</label>
+        <div class="upload-area">
+          <p><i class="fas fa-cloud-upload-alt"></i> 拖拽文件到这里</p>
+          <p>单文件限制 200MB</p>
+          <button class="upload-button"><i class="fas fa-folder-open"></i> 浏览文件</button>
         </div>
       </div>
     </aside>
 
-    <!-- 右侧主要内容区 -->
+    <!-- 主要内容区域 -->
     <main class="chat-area">
-      <!-- 新增场景切换选项卡 -->
-      <div class="scene-tabs">
-        <button class="tab-btn active" data-scene="communication">
-          <i class="fas fa-mobile-alt"></i> 通信行业
-        </button>
-        <button class="tab-btn" data-scene="ecommerce">
-          <i class="fas fa-shopping-bag"></i> 电商推荐
-        </button>
-        <button class="tab-btn" data-scene="education">
-          <i class="fas fa-book-open"></i> 在线教育
-        </button>
-      </div>
+      <header class="topbar">
+        <div class="topbar-title">
+          <h2>智能助手</h2> <span class="status-indicator online"></span> <span class="status-text">在线</span> <!-- 在线状态指示 -->
+        </div>
+        <div class="topbar-actions">
+          <button class="deploy-btn"><i class="fas fa-rocket"></i> 部署</button>
+          <button class="more-btn"><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+      </header>
 
-      <!-- 通信行业场景示例 -->
-      <div class="scene-card active" data-scene="communication">
-        <div class="scene-header">
-          <h3><i class="fas fa-satellite-dish"></i> 套餐优化建议</h3>
-          <div class="web3-badge">
-            <i class="fab fa-ethereum"></i>
-            <span>区块链数据验证已启用</span>
+      <section class="chat-window">
+        <!-- 场景 1：运营商与通信行业 -->
+        <div class="scenario-header">
+          <h3><i class="fas fa-network-wired"></i> 场景 1：运营商与通信行业</h3>
+          <p class="scenario-desc">精细化套餐匹配与用户关怀</p>
+        </div>
+        <div class="message assistant system-prompt"> <!-- 系统提示消息样式 -->
+          <div class="avatar"><i class="fas fa-user-tie"></i></div> <!-- 顾问图标 -->
+          <div class="content">
+            <p><strong>角色定位：</strong> 您是一位通信行业高级顾问，专注于通过数据洞察优化用户体验。</p>
+            <p><strong>输入数据：</strong></p>
+            <ul>
+              <li>用户基础信息：VIP等级（黄金会员）、年龄（28岁）、近3个月平均ARPU值（150元）</li>
+              <li>本月使用情况：流量使用（25GB/套餐20GB）、通话时长（300分钟/套餐200分钟）、账户余额（50元）</li>
+              <li>基站位置：常驻北京海淀区，周末漫游至天津</li>
+            </ul>
+            <p><strong>Prompt 模板：</strong></p>
           </div>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-step">
-            <h4>动态模式识别</h4>
-            <p>识别到用户连续3个月流量超限（平均超5GB），漫游时段集中在周末</p>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>动态分析与情感共鸣</strong></p>
+            <p>"您好！感谢您一直选择我们的黄金会员服务。我注意到您本月的流量和通话时长都超出了套餐限额（分别超出5GB和100分钟），这可能让您产生了额外费用。结合您的常驻位置，海淀区的5G覆盖较好，但周末漫游时网络稳定性可能略有波动，对吗？"</p>
+            <div class="thought-process">
+              <i class="fas fa-brain"></i> 思维链：<span class="thought-text">超额数据 → 费用影响 → 地理位置关联 → 用户痛点</span>
+            </div>
           </div>
-          <div class="timeline-step">
-            <h4>多维度匹配</h4>
-            <p>结合VIP等级（黄金会员）和历史ARPU值（150元），筛选出2个优化方案</p>
+        </div>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>精准推荐与收益对比</strong></p>
+            <p>"基于您的使用习惯，我为您筛选了两款升级方案：</p>
+            <ol>
+              <li><strong>方案 A：</strong> 『畅享尊荣版』（月费188元），含40GB流量+500分钟通话+京津冀漫游免流，节省额外费用约60元/月；</li>
+              <li><strong>方案 B：</strong> 『灵活叠加包』（月费30元），在原套餐基础上增加10GB流量+100分钟通话，适合短期需求。</li>
+            </ol>
+            <p>从长期价值看，方案 A 的性价比更高，还能避免漫游时的流量焦虑。"</p>
+            <div class="thought-process">
+              <i class="fas fa-brain"></i> 思维链：<span class="thought-text">历史 ARPU 值 → 套餐缺口 → 区域漫游需求 → 收益建模</span>
+            </div>
+          </div>
+        </div>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>互动式决策与隐私关怀</strong></p>
+            <p>"您更倾向于哪一方案呢？如果需要进一步优化，我们还可以为您定制家庭共享套餐，将家人的流量合并使用。另外，我们已启用区块链加密技术，您的漫游数据仅用于本地优化，绝不会外泄。"</p>
+            <p><strong>结尾提问：</strong> "您希望立即办理，还是需要和家人商量后再决定？"</p>
           </div>
         </div>
 
-        <div class="interactive-box">
-          <h4>智能推荐方案</h4>
-          <div class="solution-comparison">
-            <div class="solution-card">
-              <div class="solution-header" style="background: #2A5CAA">
-                <h5><i class="fas fa-crown"></i> 畅享尊荣版</h5>
-                <span class="price-tag">¥188/月</span>
+        <!-- 场景 2：电商平台 -->
+        <div class="scenario-header">
+          <h3><i class="fas fa-shopping-cart"></i> 场景 2：电商平台</h3>
+          <p class="scenario-desc">新品冷启动与兴趣匹配</p>
+        </div>
+        <div class="message assistant system-prompt">
+          <div class="avatar"><i class="fas fa-user-tag"></i></div> <!-- 专家图标 -->
+          <div class="content">
+            <p><strong>角色定位：</strong> 您是一位电商选品专家，擅长从零数据中挖掘用户的潜在兴趣。</p>
+            <p><strong>输入数据：</strong></p>
+            <ul>
+              <li>用户行为：近期搜索“露营装备”，收藏 3 款帐篷，浏览时长平均 5 分钟/商品</li>
+              <li>新品信息：轻量化登山帐篷（重量 1.2kg，抗风 8 级），暂无购买记录</li>
+              <li>外部数据：该用户所在地区（杭州）未来两周天气预报显示多云</li>
+            </ul>
+            <p><strong>Prompt 模板：</strong></p>
+          </div>
+        </div>
+
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>场景化洞察与需求引导</strong></p>
+            <p>"下午好！看到您最近在关注露营装备，是不是在计划一次户外探险？杭州接下来两周天气以多云为主，正是登山的好时机呢！您收藏的几款帐篷侧重舒适性，但重量多在 3kg 以上——如果追求轻量化，可能需要更专业的设备哦。"</p>
+            <div class="thought-process">
+              <i class="fas fa-brain"></i> 思维链：<span class="thought-text">搜索关键词 → 地域天气 → 收藏商品缺陷 → 需求画像</span>
+            </div>
+          </div>
+        </div>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>多维度新品解析与对比</strong></p>
+            <p>"这款新上市的『清风 Pro 帐篷』或许能完美匹配您的需求：</p>
+            <ul>
+              <li><strong>超轻设计：</strong> 1.2kg 重量，比常规款减轻 60%，适合长途徒步；</li>
+              <li><strong>抗风性能：</strong> 8 级强风测试通过，搭配您关注的防雨涂层；</li>
+              <li><strong>限时权益：</strong> 前 50 名购买者赠送便携式充气枕（与您浏览的睡垫可搭配使用）。</li>
+            </ul>
+            <p>相比收藏夹中的款式，它能同时满足轻便与安全的需求。"</p>
+            <div class="thought-process">
+              <i class="fas fa-brain"></i> 思维链：<span class="thought-text">重量对比 → 功能补足 → 赠品关联 → 增强说服力</span>
+            </div>
+          </div>
+        </div>
+        <div class="message assistant product-recommendation"> <!-- 商品推荐消息样式 -->
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>推荐商品：<span class="product-name">清风 Pro 轻量化登山帐篷</span></strong></p>
+            <div class="product-card">
+              <img src="images/tent.jpg" alt="清风 Pro 帐篷" class="product-image"/> <!-- 帐篷图片 -->
+              <div class="product-details">
+                <p class="product-price">价格：¥899</p>
+                <p class="product-features"><i class="fas fa-weight-hanging"></i> 重量：1.2kg</p>
+                <p class="product-features"><i class="fas fa-wind"></i> 抗风：8级</p>
+                <button class="buy-button"><i class="fas fa-shopping-bag"></i> 立即购买</button>
               </div>
-              <ul>
-                <li><i class="fas fa-database"></i> 40GB全域流量</li>
-                <li><i class="fas fa-phone-volume"></i> 500分钟通话</li>
-                <li><i class="fas fa-map-marker-alt"></i> 京津冀漫游特权</li>
-              </ul>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- 电商推荐场景示例 -->
-      <div class="scene-card" data-scene="ecommerce">
-        <div class="scene-header">
-          <h3><i class="fas fa-box-open"></i> 新品冷启动推荐</h3>
-          <div class="web3-badge">
-            <i class="fas fa-certificate"></i>
-            <span>NFT溯源认证支持</span>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>紧迫感营造与信任加固</strong></p>
+            <p>"目前库存仅剩 12 件，建议尽快锁定优惠。所有新品支持 NFT 溯源认证，您可以通过区块链查看生产材料和质检报告。需要我为您保留一件，还是先查看其他用户的实地测评视频？"</p>
           </div>
         </div>
 
-        <div class="dynamic-grid">
-          <div class="product-card">
-            <img src="https://via.placeholder.com/200x150?text=轻量化帐篷" 
-                 alt="露营装备"
-                 class="product-img">
-            <div class="product-meta">
-              <span class="tag new-tag">新品首发</span>
-              <span class="tag stock-tag"><i class="fas fa-bolt"></i> 仅剩12件</span>
-            </div>
-            <h5>清风Pro帐篷</h5>
-            <div class="feature-list">
-              <div class="feature-item">
-                <i class="fas fa-weight-hanging"></i>
-                <span>1.2kg超轻量</span>
-              </div>
-              <div class="feature-item">
-                <i class="fas fa-wind"></i>
-                <span>8级抗风</span>
-              </div>
-            </div>
-          </div>
+        <!-- 场景 3：在线教育平台 -->
+        <div class="scenario-header">
+          <h3><i class="fas fa-graduation-cap"></i> 场景 3：在线教育平台</h3>
+          <p class="scenario-desc">学习路径规划与成果激励</p>
         </div>
-      </div>
-
-      <!-- 教育场景示例 -->
-      <div class="scene-card" data-scene="education">
-        <div class="scene-header">
-          <h3><i class="fas fa-user-graduate"></i> 学习路径规划</h3>
-          <div class="web3-badge">
-            <i class="fas fa-link"></i>
-            <span>智能合约认证</span>
+        <div class="message assistant system-prompt">
+          <div class="avatar"><i class="fas fa-user-graduate"></i></div> <!-- 规划师图标 -->
+          <div class="content">
+            <p><strong>角色定位：</strong> 您是一位 AI 学习规划师，专注于为学员构建个性化知识地图。</p>
+            <p><strong>输入数据：</strong></p>
+            <ul>
+              <li>学员档案：Python 基础课程（85分）、数据可视化入门（70分），每周学习时长 6 小时</li>
+              <li>目标课程：机器学习实战（需先修统计学）、区块链开发（需 Python 进阶）</li>
+              <li>行为偏好：偏好视频教学+实战项目，厌恶纯理论讲解</li>
+            </ul>
+            <p><strong>Prompt 模板：</strong></p>
           </div>
         </div>
 
-        <div class="learning-path">
-          <div class="path-stage">
-            <div class="stage-icon">
-              <i class="fas fa-chart-bar"></i>
-              <div class="stage-line"></div>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>学情诊断与目标对齐</strong></p>
+            <p>"Hi，学习进度很棒呀！您的 Python 基础扎实（85分），但在数据可视化的 Matplotlib 进阶部分还有提升空间。如果想冲击机器学习方向，我们需要先巩固统计学基础——这和您喜欢的实战风格并不冲突，可以通过案例式教学进行哦。"</p>
+            <div class="thought-process">
+              <i class="fas fa-brain"></i> 思维链：<span class="thought-text">历史成绩 → 技能缺口 → 目标课程门槛 → 逻辑链条</span>
             </div>
-            <h5>统计学实战</h5>
-            <p>通过NBA数据分析掌握核心概念</p>
-          </div>
-          <div class="path-stage">
-            <div class="stage-icon">
-              <i class="fas fa-code"></i>
-              <div class="stage-line"></div>
-            </div>
-            <h5>Python强化</h5>
-            <p>基于Pandas重构可视化项目</p>
           </div>
         </div>
-      </div>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>路径规划与资源匹配</strong></p>
+            <p>"为您设计的『30 天机器学习冲刺计划』包含三个阶段：</p>
+            <ol>
+              <li><strong>基石阶段（7 天）：</strong> 《统计学实战工作坊》用 NBA 球员数据分析替代公式推导；</li>
+              <li><strong>衔接阶段（10 天）：</strong> 《Python 数据分析强化营》带您用 Pandas 重构可视化项目；</li>
+              <li><strong>冲刺阶段（13 天）：</strong> 《Kaggle 机器学习入门》从泰坦尼克预测到图像分类实战。</li>
+            </ol>
+            <p>每完成一个阶段即可解锁 NFT 成就徽章，并兑换 1 对 1 导师答疑权益。"</p>
+            <div class="thought-process">
+              <i class="fas fa-brain"></i> 思维链：<span class="thought-text">前置知识补全 → 兴趣点衔接 → 激励体系嵌套 → 三层递进结构</span>
+            </div>
+          </div>
+        </div>
+        <div class="message assistant course-plan"> <!-- 课程计划消息样式 -->
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <div class="course-stage">
+              <h4 class="stage-title"><i class="fas fa-cube"></i> 基石阶段 (7天)</h4>
+              <p class="course-name">《统计学实战工作坊》</p>
+              <p class="course-desc">NBA球员数据分析，案例式教学，夯实统计学基础。</p>
+              <button class="enroll-button"><i class="fas fa-sign-in-alt"></i> 开始学习</button>
+            </div>
+            <div class="course-stage">
+              <h4 class="stage-title"><i class="fas fa-link"></i> 衔接阶段 (10天)</h4>
+              <p class="course-name">《Python 数据分析强化营》</p>
+              <p class="course-desc">Pandas 重构可视化项目，提升数据分析技能。</p>
+              <button class="enroll-button"><i class="fas fa-sign-in-alt"></i> 开始学习</button>
+            </div>
+            <div class="course-stage">
+              <h4 class="stage-title"><i class="fas fa-rocket"></i> 冲刺阶段 (13天)</h4>
+              <p class="course-name">《Kaggle 机器学习入门》</p>
+              <p class="course-desc">泰坦尼克预测到图像分类实战，Kaggle实战项目。</p>
+              <button class="enroll-button"><i class="fas fa-sign-in-alt"></i> 开始学习</button>
+            </div>
+          </div>
+        </div>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p><strong>弹性调整与链上激励</strong></p>
+            <p>"该计划支持动态调整节奏，您希望明天从统计学案例开始，还是先试听一节 Kaggle 课程？所有结业证书将通过智能合约上链，未来可一键分享至 LinkedIn，让全球企业验证您的学习成果！"</p>
+          </div>
+        </div>
+
+
+        <!-- 用户消息示例 -->
+        <div class="message user">
+          <div class="avatar">
+            <img src="images/user-avatar.svg" alt="用户头像" class="user-avatar"/> <!-- 用户头像 -->
+          </div>
+          <div class="content">
+            <p>你好<span>👋</span>，我想了解一下机器学习的入门课程。</p>
+          </div>
+        </div>
+        <div class="message assistant">
+          <div class="avatar"><i class="fas fa-robot"></i></div>
+          <div class="content">
+            <p>没问题！很高兴为您介绍我们的机器学习入门课程。请问您是否有编程基础呢？</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="input-bar">
+        <textarea
+          placeholder="请输入对话内容，换行请输入Shift+Enter。"
+          rows="1"
+          id="chat-input"  <!-- 添加 ID 方便 JS 操作 -->
+        ></textarea>
+        <button class="send-btn" id="send-button"><i class="fas fa-paper-plane"></i> 发送</button> <!-- 发送按钮图标 -->
+      </footer>
     </main>
   </div>
 
-  <!-- 新增脚本 -->
-  <script>
-    // 选项卡切换逻辑
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        // 移除所有激活状态
-        document.querySelectorAll('.tab-btn, .scene-card').forEach(el => {
-          el.classList.remove('active');
-        });
-        
-        // 添加当前激活状态
-        this.classList.add('active');
-        const scene = this.dataset.scene;
-        document.querySelector(`.scene-card[data-scene="${scene}"]`).classList.add('active');
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
